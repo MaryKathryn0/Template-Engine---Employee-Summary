@@ -40,11 +40,6 @@ inquirer.prompt([
             },
             {
                 type: "input",
-                message: "What is your employee ID?",
-                name: "id"
-            },
-            {
-                type: "input",
                 message: "What is your email?",
                 name: "email"
             }
@@ -66,15 +61,11 @@ inquirer.prompt([
             },
             {
                 type: "input",
-                message: "What is your employee ID?",
-                name: "id"
-            },
-            {
-                type: "input",
                 message: "What is your email?",
                 name: "email"
             }
         ])
+        const engineer = new Engineer(response.name, id, response.email, response.github)
     }
 
     else if(response.role === "Intern") {
@@ -91,42 +82,17 @@ inquirer.prompt([
             },
             {
                 type: "input",
-                message: "What is your employee ID?",
-                name: "id"
-            },
-            {
-                type: "input",
                 message: "What is your email?",
                 name: "email"
             }
         ])
       }
+    })
 
 
 
 
 
-
-    {
-        type: "input",
-        message: "What is your name?",
-        name: "name"
-    },
-    {
-        type: "input",
-        message: "What is your employee ID?",
-        name: "id"
-    },
-    {
-        type: "input",
-        message: "What is your email?",
-        name: "email"
-    }
-
-
-}
-
-const Engineer
 
 
 // After the user has input all employees desired, call the `render` function (required
