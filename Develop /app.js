@@ -14,22 +14,6 @@ const render = require("./lib/htmlRenderer");
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 inquirer.prompt([
-
-    {
-        type: "input",
-        message: "What is your name?",
-        name: "name"
-    },
-    {
-        type: "input",
-        message: "What is your employee ID?",
-        name: "id"
-    },
-    {
-        type: "input",
-        message: "What is your email?",
-        name: "email"
-    },
     {
         type: "list",
         message: "What is your employee role?",
@@ -48,31 +32,101 @@ inquirer.prompt([
                 type: "input",
                 message: "What is your office number?",
                 name: "officeNumber"
+            },
+            {
+                type: "input",
+                message: "What is your name?",
+                name: "name"
+            },
+            {
+                type: "input",
+                message: "What is your employee ID?",
+                name: "id"
+            },
+            {
+                type: "input",
+                message: "What is your email?",
+                name: "email"
             }
         ])
+        console.log(response);
     }
+    
     else if (response.role === "Engineer") {
         inquirer.prompt([
             {
                 type: "input",
                 message: "What is your Github",
                 name: "github"
+            },
+            {
+                type: "input",
+                message: "What is your name?",
+                name: "name"
+            },
+            {
+                type: "input",
+                message: "What is your employee ID?",
+                name: "id"
+            },
+            {
+                type: "input",
+                message: "What is your email?",
+                name: "email"
             }
         ])
     }
+
     else if(response.role === "Intern") {
         inquirer.prompt([
             {
                 type: "input",
                 message: "What school do you attend?",
                 name: "school"
+            },
+            {
+                type: "input",
+                message: "What is your name?",
+                name: "name"
+            },
+            {
+                type: "input",
+                message: "What is your employee ID?",
+                name: "id"
+            },
+            {
+                type: "input",
+                message: "What is your email?",
+                name: "email"
             }
         ])
       }
 
-}
-  });
 
+
+
+
+
+    {
+        type: "input",
+        message: "What is your name?",
+        name: "name"
+    },
+    {
+        type: "input",
+        message: "What is your employee ID?",
+        name: "id"
+    },
+    {
+        type: "input",
+        message: "What is your email?",
+        name: "email"
+    }
+
+
+}
+
+const Engineer
 
 
 // After the user has input all employees desired, call the `render` function (required
