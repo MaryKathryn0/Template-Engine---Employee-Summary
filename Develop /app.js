@@ -44,9 +44,9 @@ inquirer.prompt([
                 name: "email"
             }
         ])
-        console.log(response);
+        const manager = new Manager(response.name, id, response.email, response.officenumber)
     }
-    
+
     else if (response.role === "Engineer") {
         inquirer.prompt([
             {
@@ -68,7 +68,7 @@ inquirer.prompt([
         const engineer = new Engineer(response.name, id, response.email, response.github)
     }
 
-    else if(response.role === "Intern") {
+    else if (response.role === "Intern") {
         inquirer.prompt([
             {
                 type: "input",
@@ -86,8 +86,9 @@ inquirer.prompt([
                 name: "email"
             }
         ])
-      }
-    })
+        const intern = new Intern(response.name, id, response.email, response.school)
+    }
+})
 
 
 
