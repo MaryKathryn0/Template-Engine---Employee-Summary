@@ -5,10 +5,22 @@ class Employee {
       this.id = id;
       this.email = email;
     }
-  
-    printInfo() {
-      console.log(`This vehicle has ${this.numberOfWheels} wheels`);
-      console.log(`This vehicle has an id of ${this.id}`);
+
+    getname() {
+      return this.name;
     }
+
+    getid() {
+      return this.id;
+    }
+
+    getemail() {
+      return this.email;
+    }
+    getRole() {
+      return "Employee"
+    }
+  
+
   }
   module.exports = Vehicle;
