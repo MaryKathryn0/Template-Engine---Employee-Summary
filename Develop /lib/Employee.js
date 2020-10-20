@@ -6,15 +6,15 @@ class Employee {
       this.email = email;
     }
 
-    getname() {
+    getName() {
       return this.name;
     }
 
-    getid() {
+    getId() {
       return this.id;
     }
 
-    getemail() {
+    getEmail() {
       return this.email;
     }
     getRole() {
@@ -23,4 +23,4 @@ class Employee {
   
 
   }
-  module.exports = Vehicle;
+  module.exports = Employee;
