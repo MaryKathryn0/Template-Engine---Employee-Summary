@@ -5,9 +5,12 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
+var id = 1
+
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
+const allEmployees = []
 const render = require("./lib/htmlRenderer");
 
 
@@ -44,7 +47,12 @@ inquirer.prompt([
                 name: "email"
             }
         ])
+        id++
         const manager = new Manager(response.name, id, response.email, response.officenumber)
+        allEmployees.push(manager);
+        console.log("${response.name} added");
+        fs.writeFileSync(outputPath,);
+
     }
 
     else if (response.role === "Engineer") {
@@ -65,7 +73,9 @@ inquirer.prompt([
                 name: "email"
             }
         ])
+        id++
         const engineer = new Engineer(response.name, id, response.email, response.github)
+        allEmployees.push(engineer);
     }
 
     else if (response.role === "Intern") {
@@ -86,8 +96,12 @@ inquirer.prompt([
                 name: "email"
             }
         ])
+        id++
         const intern = new Intern(response.name, id, response.email, response.school)
+        allEmployees.push(intern);
     }
+    console.log(response);
+
 })
 
 
