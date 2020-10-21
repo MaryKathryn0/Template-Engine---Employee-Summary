@@ -24,7 +24,8 @@ inquirer.prompt([
         choices: [
             "Engineer",
             "Manager",
-            "Intern"
+            "Intern",
+            "Done"
         ]
     }
 ]).then(function (response) {
@@ -50,8 +51,7 @@ inquirer.prompt([
         id++
         const manager = new Manager(response.name, id, response.email, response.officenumber)
         allEmployees.push(manager);
-        console.log("${response.name} added");
-        fs.writeFileSync(outputPath,);
+
 
     }
 
@@ -100,19 +100,24 @@ inquirer.prompt([
         const intern = new Intern(response.name, id, response.email, response.school)
         allEmployees.push(intern);
     }
-    console.log(response);
+
+    else if (response.role === "Done") {
+        
+        fs.writeFileSync(outputPath, render(allEmployees), 'utf8');
+        console.log(Success);
+        console.log(allEmployees);
+    }
+
 
 })
-
-
-
-
-
-
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
+
+
+
+
 
 // After you have your html, you're now ready to create an HTML file using the HTML
 // returned from the `render` function. Now write it to a file named `team.html` in the
