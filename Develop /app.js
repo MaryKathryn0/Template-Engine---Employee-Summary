@@ -16,100 +16,106 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-inquirer.prompt([
-    {
-        type: "list",
-        message: "What is your employee role?",
-        name: "role",
-        choices: [
-            "Engineer",
-            "Manager",
-            "Intern",
-            "Done"
-        ]
-    }
-]).then(function (response) {
+function createTeam() {
 
-    if (response.role === "Manager") {
-        inquirer.prompt([
-            {
-                type: "input",
-                message: "What is your office number?",
-                name: "officeNumber"
-            },
-            {
-                type: "input",
-                message: "What is your name?",
-                name: "name"
-            },
-            {
-                type: "input",
-                message: "What is your email?",
-                name: "email"
-            }
-        ])
-        id++
-        const manager = new Manager(response.name, id, response.email, response.officenumber)
-        allEmployees.push(manager);
+    inquirer.prompt([
+        {
+            type: "list",
+            message: "What is your employee role?",
+            name: "role",
+            choices: [
+                "Engineer",
+                "Manager",
+                "Intern",
+                "Done"
+            ]
+        }
+    ]).then(function (response) {
+
+        if (response.role === "Manager") {
+            inquirer.prompt([
+                {
+                    type: "input",
+                    message: "What is your office number?",
+                    name: "officeNumber"
+                },
+                {
+                    type: "input",
+                    message: "What is your name?",
+                    name: "name"
+                },
+                {
+                    type: "input",
+                    message: "What is your email?",
+                    name: "email"
+                }
+            ]).then(function (response) {
+                id++
+                const manager = new Manager(response.name, id, response.email, response.officeNumber)
+                allEmployees.push(manager);
+                createTeam();
+            })
+        }
+
+        else if (response.role === "Engineer") {
+            inquirer.prompt([
+                {
+                    type: "input",
+                    message: "What is your Github",
+                    name: "github"
+                },
+                {
+                    type: "input",
+                    message: "What is your name?",
+                    name: "name"
+                },
+                {
+                    type: "input",
+                    message: "What is your email?",
+                    name: "email"
+                }
+            ])
+            id++
+            const engineer = new Engineer(response.name, id, response.email, response.github)
+            allEmployees.push(engineer);
+        }
+
+        else if (response.role === "Intern") {
+            inquirer.prompt([
+                {
+                    type: "input",
+                    message: "What school do you attend?",
+                    name: "school"
+                },
+                {
+                    type: "input",
+                    message: "What is your name?",
+                    name: "name"
+                },
+                {
+                    type: "input",
+                    message: "What is your email?",
+                    name: "email"
+                }
+            ])
+            id++
+            const intern = new Intern(response.name, id, response.email, response.school)
+            allEmployees.push(intern);
+        }
+
+        else if (response.role === "Done") {
+
+            fs.writeFileSync(outputPath, render(allEmployees), 'utf8');
+            console.log("Success");
+            console.log(allEmployees);
+        }
 
 
-    }
+    })
 
-    else if (response.role === "Engineer") {
-        inquirer.prompt([
-            {
-                type: "input",
-                message: "What is your Github",
-                name: "github"
-            },
-            {
-                type: "input",
-                message: "What is your name?",
-                name: "name"
-            },
-            {
-                type: "input",
-                message: "What is your email?",
-                name: "email"
-            }
-        ])
-        id++
-        const engineer = new Engineer(response.name, id, response.email, response.github)
-        allEmployees.push(engineer);
-    }
-
-    else if (response.role === "Intern") {
-        inquirer.prompt([
-            {
-                type: "input",
-                message: "What school do you attend?",
-                name: "school"
-            },
-            {
-                type: "input",
-                message: "What is your name?",
-                name: "name"
-            },
-            {
-                type: "input",
-                message: "What is your email?",
-                name: "email"
-            }
-        ])
-        id++
-        const intern = new Intern(response.name, id, response.email, response.school)
-        allEmployees.push(intern);
-    }
-
-    else if (response.role === "Done") {
-        
-        fs.writeFileSync(outputPath, render(allEmployees), 'utf8');
-        console.log(Success);
-        console.log(allEmployees);
-    }
-
-
-})
+}
+// calls function
+createTeam();
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
